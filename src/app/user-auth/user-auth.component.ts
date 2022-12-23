@@ -32,11 +32,16 @@ export class UserAuthComponent implements OnInit {
   form: FormGroup = new FormGroup({
     login: new FormControl('',[
       Validators.required,
-      Validators.minLength(4)]
+      Validators.minLength(4),
+      Validators.maxLength(25),
+      
+    ]
       ),
     password: new FormControl('',[
     Validators.required,
-      Validators.minLength(4)])
+    Validators.pattern("^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$")
+
+    ])
   });
 
   login() {
