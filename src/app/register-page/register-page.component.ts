@@ -19,7 +19,9 @@ export class RegisterPageComponent implements OnInit {
   form: FormGroup = new FormGroup({
     username: new FormControl('',[
       Validators.required,
-      Validators.minLength(4)]
+      Validators.minLength(4),
+      Validators.maxLength(25),
+    ]
       ),
       email: new FormControl('',[
         Validators.required,
@@ -28,7 +30,7 @@ export class RegisterPageComponent implements OnInit {
         ),
         height: new FormControl(160,[
           Validators.required,
-          Validators.min(80),
+          Validators.min(60),
           Validators.max(250)
         
         ]
@@ -41,7 +43,9 @@ export class RegisterPageComponent implements OnInit {
             ),
     password: new FormControl('',[
     Validators.required,
-      Validators.minLength(4)])
+    Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,}$")
+    ]
+      )
   });
 
   registeredUserInfo = false;

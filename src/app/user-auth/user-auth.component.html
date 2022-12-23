@@ -18,7 +18,6 @@
                  
                     <div *ngIf="(form.get('login')?.invalid && form.get('login')?.touched) || form.get('login')?.dirty">
                       <small *ngIf="form.get('login')?.errors?.['required']" class="text-danger"> login is required.</small>
-                      <small *ngIf="form.get('login')?.errors?.['minlength']" class="text-danger">        login must be at least 4 characters long.</small>
                     </div>
                   </div>
                 
@@ -29,7 +28,6 @@
                  
                     <div *ngIf="(form.get('password')?.invalid && form.get('password')?.touched) || form.get('password')?.dirty">
                       <small *ngIf="form.get('password')?.errors?.['required']" class="text-danger"> Password is required.</small>
-                      <small *ngIf="form.get('password')?.errors?.['minlength']" class="text-danger">        Password must be at least 4 characters long.</small>
                     </div>
                  
                   </div>

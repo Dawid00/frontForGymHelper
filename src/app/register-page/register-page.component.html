@@ -48,7 +48,7 @@
                         <label class="form-label" for="password">Password</label>
                         <div *ngIf="(form.get('password')?.invalid && form.get('password')?.touched) || form.get('password')?.dirty">
                             <small *ngIf="form.get('password')?.errors?.['required']" class="text-danger"> Password is required</small>
-                            <small *ngIf="form.get('password')?.errors?.['minlength']" class="text-danger"> Password must be at least 4 characters long.</small>
+                            <small *ngIf="form.get('password')?.errors?.['pattern']" class="text-danger"> Password should: length 8, one number, one character and one special character.</small>
                           </div>
                       </div>
                     </div>
