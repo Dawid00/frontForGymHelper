@@ -6,6 +6,7 @@ import { CreateTrainingComponent } from './create-training/create-training.compo
 import { ExerciseEditionComponent } from './exercise-edition/exercise-edition.component';
 import { MenuDashboardComponent } from './menu-dashboard/menu-dashboard.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 import { TrainingDetailsComponent } from './training-details/training-details.component';
 import { TrainingEditionComponent } from './training-edition/training-edition.component';
 import { TrainingsListComponent } from './trainings-list/trainings-list.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'training/edition/:id', component: TrainingEditionComponent, canActivate: [authGuard] },
   { path: 'exercise/edition/:id', component: ExerciseEditionComponent, canActivate: [authGuard] },
   { path: 'auth/login', component: UserAuthComponent },
+  { path: 'auth/register', component: RegisterPageComponent },
   { path: 'user', component: UserDetailComponent, canActivate: [authGuard], },
   { path: 'home', component: MenuDashboardComponent, canActivate: [authGuard], },
    { path: '**', component: NotFoundPageComponent },
