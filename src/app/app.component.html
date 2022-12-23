@@ -1,0 +1,54 @@
+
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="" *ngIf="isLogged()">Gym Helper</a>
+      <a class="navbar-brand" href="/auth/login"*ngIf="!isLogged()">Gym Helper</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li *ngIf="isLogged()" class="nav-item">
+            <a class="nav-link" routerLink="/user" routerLinkActive="active"
+              ariaCurrentWhenActive="page">User details</a></li>
+          <li *ngIf="isLogged()" class="nav-item">
+            <a class="nav-link" routerLink="/trainings" routerLinkActive="active"
+              ariaCurrentWhenActive="page">Trainings</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item" style="margin-right:0" *ngIf="!isLogged()">
+            <a class="nav-link" routerLink="/auth/login" routerLinkActive="active"
+              ariaCurrentWhenActive="page">Login</a>
+          </li>
+          <li class="nav-item" style="margin-right:0" *ngIf="isLogged()">
+            <a class="nav-link"(click)="logout()" routerLink="/auth/login" routerLinkActive="active"
+              ariaCurrentWhenActive="page">Logout</a>
+          </li>
+          <li class="nav-item" style="margin-right:0" *ngIf="!isLogged()">
+            <a class="nav-link"(click)="register()" routerLink="/auth/register" routerLinkActive="active"
+              ariaCurrentWhenActive="page">Register</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+  <div class="row my-5 mx-5">
+    <router-outlet></router-outlet>
+    </div>
+  </div>
+
+
+  
+    <footer class="text-center text-white fixed-bottom">
+      <!-- Grid container -->
+      <div class="container p-4"></div>
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      <div class="bg-dark text-center p-3" style="background-color: #21081a;">
+        © 2022 Copyright: Dawid Plewik
+      </div>
+      <!-- Copyright -->
+    </footer>

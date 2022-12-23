@@ -1,0 +1,52 @@
+<div class="row my-5">
+    <h3>Training</h3>
+    <div class="row">
+        <div class="col-1">ID:</div>
+        <div class="col-11">{{training?.id}}</div>     <div class="col"></div>
+    </div>
+    <div class="row">
+
+        <div class="col-1">Status:</div>
+        <div class="col-11"> {{training?.status}}</div>
+    </div>
+    <div class="row">
+
+        <div class="col-1">Date:</div>
+        <div class="col-11"> {{training?.date | date: 'MMMM d, y, H:mm:ss z' }}
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-1">Description:</div>
+        <div class="col-11"> {{training?.description}}</div>     <div class="col"></div>
+    </div>
+
+</div>
+<div class="row my-5">
+    <h3>Exercises</h3>
+    <table *ngIf="exercises.length > 0" class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Type</th>
+                <th scope="col">Reps</th>
+                <th scope="col">Series</th>
+                <th scope="col">Weight[kg]</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr *ngFor="let i of exercises">
+                <th scope="row">{{i.id}}</th>
+                <td>{{i.type}}</td>
+                <td>{{i.reps}}</td>
+                <td>{{i.sets}}</td>
+                <td>{{i.weight}} kg</td>
+                <!-- <td> <button class="mx-2 btn btn-danger">Delete</button>
+                    <button class="mx-2 btn btn-warning">Edit</button>
+                </td> -->
+
+            </tr>
+        </tbody>
+    </table>
+</div>

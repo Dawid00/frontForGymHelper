@@ -1,0 +1,121 @@
+
+  <div *ngIf="createdInfo==true" class="alert alert-success" role="alert">
+    Training has been created!
+  </div>
+<div class="row my-5 mx-5 g-3 align-items-center">
+    <div class="row">
+        <div class="col mx-5">
+            <h1>Creating training</h1>
+        </div>
+        <div class="col mx-5">
+            <h1>Exercises</h1>
+            <button class=" btn  my-2  btn-success add-ex" (click)="open(content)">Add exercise</button>
+                <button class="my-2 mx-2 btn btn-secondary add-ex" (click)="clearExercises()">Clear
+                    exercises</button>
+        </div>
+    </div>
+    <div class="col mx-5 my-3">
+
+        <form [formGroup]="trainingForm">
+            <div class="row">
+                <div class="col-auto my-2 mx">
+                    <label for="type" class="col-form-label">Status</label>
+                </div>
+                <div class="col-auto my-2">
+                    <select class="form-select form-select-lg mb-3" formControlName="status"
+                        aria-describedby="typeHelpInline" aria-label=".form-select-lg example">
+                        <option *ngFor="let i of trainingStatusArray" value="{{i}}">{{i}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto my-2">
+                    <label for="date" class="col-form-label">Date </label>
+                </div>
+                <div class="col-auto my-2">
+                    <input id="date" class="form-control" aria-describedby="dateHelpInline" type="datetime-local"
+                        formControlName="date" />
+                </div>
+                <div class="col-auto my-2">
+                    <span id="dateHelpInline" class="form-text">
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto my-2">
+                    <label for="description" class="col-form-label">Description </label>
+                </div>
+                <div class="col-auto my-2">
+                    <input id="description" class="form-control" aria-describedby="descriptionHelpInline" type="text"
+                        formControlName="description" />
+                </div>
+                <div class="col-auto my-2">
+                    <span id="descriptionHelpInline" class="form-text">
+                    </span>
+                </div>
+            </div>
+
+
+        </form>
+        <div class="row" style="text-align: right;">
+            <div class="col mx-0 my-3">
+                <button class="btn mx-2 btn-success add-ex" [disabled]="!validateSubmit()"
+                    (click)="submitTraining()">Submit</button>
+                <button class="mx-2 btn btn-secondary add-ex" (click)="clearForm()">Clear</button>
+            </div>
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Creating exercise</h4>
+                    <button type="button" class="btn-close" aria-label="Close"
+                        (click)="modal.dismiss('Cross click')"></button>
+                </div>
+                <div class="modal-body">
+                    <create-exercise (newExerciseEvent)="addExercise($event)"></create-exercise>
+                </div>
+                <!-- <div class="modal-footer"> -->
+                <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
+                <!-- </div> -->
+          </ng-template>
+
+        </div>
+        <div class="row" style="text-align: right; color:red" *ngIf="!validateSubmit()">
+            <div class="col mx-0 my-3">
+               All fields are required and you need minimum one exercise!
+            </div>
+          
+
+        </div>
+    </div>
+    <div class="col mx-5 my-2">
+        <div class="row">
+            <table *ngIf="exercises.length > 0" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Reps</th>
+                        <th scope="col">Series</th>
+                        <th scope="col">Weight[kg]</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr *ngFor="let ex of exercises;let i = index">
+                        <th scope="row">{{i + 1}}</th>
+                        <td>{{ex.type}}</td>
+                        <td>{{ex.reps}}</td>
+                        <td>{{ex.sets}}</td>
+                        <td>{{ex.weight}} kg</td>
+                        <td> 
+                            <button class="mx-2 btn btn-warning" (click)="deleteExById(ex.id)">Edit</button>
+                            <button class="mx-2 btn btn-danger" (click)="deleteExById(ex.id)">Delete</button>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

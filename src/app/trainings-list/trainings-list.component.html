@@ -1,0 +1,29 @@
+<div class="row mx-5">
+    <h3>Training list</h3>
+    <p *ngIf="trainings.length==0">You have no trainings.</p>
+    <table *ngIf="trainings.length > 0" class="table my-3">
+        <!-- <table  class="table"> -->
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr *ngFor="let training of trainings">
+                <td>{{training.id}}</td>
+                <td>{{training.date | date: 'MMMM d, y, H:mm:ss z' }} </td>
+                <td>{{training.description}}</td>
+                <td>{{training.status}}</td>
+                <td><a [routerLink]="['/trainings', training.id]"><button class="mx-2 btn btn-info">Details</button></a>
+                    <a [routerLink]="['/training/edition', training.id]"> <button class="mx-2 btn btn-warning">Edit</button></a>
+                    <button class="mx-2 btn btn-danger" (click)="deleteById(training.id)">Delete</button>
+                
+                </td>
+                </tr>
+        </tbody>
+    </table>
+</div>

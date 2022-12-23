@@ -1,0 +1,63 @@
+
+
+
+    <form [formGroup]="form">
+        <div class="container py-5 h-100">
+      
+          <div class="row d-flex justify-content-center align-items-center h-100">
+          
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                <div class="card-body p-5 text-center">
+      
+                  <h3 class="mb-5">Sign in</h3>
+      
+                  <div class="form-outline mb-4">
+                    <input type="text" formControlName="login" id="username" class="form-control form-control-lg" />
+                    <label class="form-label"  for="username">Login</label>
+                  </div>
+                  <div *ngIf="form.get('login')?.invalid && (form.get('login')?.dirty || form.get('login')?.touched )"
+                  class="alert alert-danger">
+              
+                  <div *ngIf="form.get('login')?.errors?.['required']">
+                    Username is required.
+                </div>
+                <div *ngIf="form.get('login')?.errors?.['minlength']">
+                  Username must be at least 4 characters long.
+                </div>
+          
+              </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="typePasswordX-2" formControlName="password" class="form-control form-control-lg" />
+                    <label class="form-label" for="typePasswordX-2">Password</label>
+                  </div>
+                  <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched )"
+                  class="alert alert-danger">
+              
+                  <div *ngIf="form.get('password')?.errors?.['required']">
+                    Password is required.
+                </div>
+                <div *ngIf="form.get('password')?.errors?.['minlength']">
+                  Password must be at least 4 characters long.
+                </div>
+          
+              </div>
+                  <!-- Checkbox -->
+                  <!-- <div class="form-check d-flex justify-content-start mb-4">
+                    <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                    <label class="form-check-label" for="form1Example3"> Remember password </label>
+                  </div> -->
+      
+                  <button class="btn btn-primary btn-lg btn-block" [disabled]="!form.valid" (click)="login()">Login</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="row d-flex justify-content-center align-items-center h-25  mt-5 ">
+          <div  *ngIf="failed == true" style="margin:auto;text-align: center;"class="col-2 alert alert-danger">
+            Wrong login or password </div></div>
+      </div>
+    </form>
+    

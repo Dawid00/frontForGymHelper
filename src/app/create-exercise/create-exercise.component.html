@@ -1,0 +1,66 @@
+<div class="glowna row g-3 align-items-center">
+    <form [formGroup]="exerciseForm">
+        <div class="row">
+            <div class="col-auto ">
+                <label for="type" class="col-form-label">Type </label>
+            </div>
+            <div class="col-auto">
+                <select class="form-select form-select-lg mb-3" formControlName="type" aria-describedby="typeHelpInline"
+                    aria-label=".form-select-lg example">
+                    <option *ngFor="let i of exerciseTypes" value="{{i}}">{{i}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <label for="weight" class="col-form-label">Weight </label>
+            </div>
+            <div class="col-auto">
+                <input id="weight" class="form-control" aria-describedby="weightHelpInline" type="number" min="0"
+                    formControlName="weight" />
+            </div>
+            <div class="col-auto">
+                <span id="weightHelpInline" class="form-text">
+                    Weight in kg.
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <label for="reps" class="col-form-label">Series </label>
+            </div>
+            <div class="col-auto">
+                <input id="series" class="form-control" aria-describedby="seriesHelpInline" type="number" min="1"
+                    formControlName="series" />
+            </div>
+            <div class="col-auto">
+                <span id="seriesHelpInline" class="form-text">
+                    Minimum 1 series
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <label for="reps" class="col-form-label">Reps </label>
+            </div>
+            <div class="col-auto">
+                <input id="reps" class="form-control" aria-describedby="repsHelpInline" type="number" min="1"
+                    formControlName="reps" />
+            </div>
+            <div class="col-auto">
+                <span id="repsHelpInline" class="form-text">
+                    Minimum 1 rep
+                </span>
+            </div>
+        </div>
+    </form>
+    <div class="row my-3">
+        <div class="col">
+            <button class="btn przycisk mx-2 btn-primary add-ex" [disabled]="!exerciseForm.valid"
+                (click)="submitExercise()">Add</button>
+        </div>
+        <div class="col">
+            <button class="przycisk mx-2 btn btn-secondary add-ex" (click)="clearForm()">Clear</button>
+        </div>
+    </div>
+</div>
